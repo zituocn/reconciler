@@ -1,4 +1,4 @@
-module github.com/zituocn/reconclier
+module github.com/zituocn/reconciler
 
 go 1.24.10
 
