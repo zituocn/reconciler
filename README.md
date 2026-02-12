@@ -21,11 +21,11 @@ func main() {
 		DSN:           "root:123456@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4",
 		TableA:        "江西-2025-招生计划",
 		TableB:        "江西-2025-招生计划2",
-		TableC:        "江西-2025-招生计划_test_result",
+		TableC:        "江西-2025-招生计划_test_result",  //以A表为基础，重跑创建新表
 		KeyFields:     []string{"school_code", "admit", "first_sub", "major_index"},
 		IgnoreFieldsA: []string{"prov", "id", "school_dm", "major_dh", "category", "type_str"},
 		IgnoreFieldsB: []string{"prov", "id", "nature2", "nature", "category", "type_str", "prov", "type_str"},
-		Strategy:      reconciler.UseA,
+		Strategy:      reconciler.UseA, //冲突时的策略，以A表数据为准 || 以B表数据为准 || 交互式询问用户确认
 	}
 
 	nm := reconciler.NewMerger(cfg)
